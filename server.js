@@ -12,6 +12,17 @@ const PORT = 3002;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// routes
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+
+app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'notes.html')));
+
+// display all notes
+app.get('/api/notes', (req, res) => res.json(notes));
+
+// display a single note
+
+// create a new note
 
 
 // Starts the server to begin listening
