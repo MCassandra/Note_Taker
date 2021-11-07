@@ -2,6 +2,8 @@
 
 const express = require('express');
 const path = require('path');
+const db = require('./db/db.json')
+const fs = require('fs')
 
 
 // Sets up the Express App
@@ -19,12 +21,17 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public','index.htm
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public','notes.html')));
 
 // display all notes
-// app.get('/api/notes', (req, res) => res.json(notes));
+app.post('/api/notes', (req, res) => {
+    const newNote = req.body;
 
+    console.log(newNote)
+    let dbData
+});
 // display a single note
 
 // create a new note
-app.get('/add', (req, res) => res.sendFile(path.join(__dirname, 'notes.html')));
+
+
 
 // Starts the server to begin listening
 
