@@ -39,7 +39,13 @@ app.post('/api/notes', (req, res) => {
   });
 
 
-
+// delete a note
+app.delete('/notes/:id', (req, res,) => {
+    const dbIndex = getIndexById(req.params.id, dbNotes);
+    if (dbIndex !== -1) {
+      dbNotes.splice(dbIndex, 1);
+    };
+  });
 // Starts the server to begin listening
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
