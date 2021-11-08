@@ -21,15 +21,22 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public','index.htm
 app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public','notes.html')));
 
 // display all notes
-app.post('/api/notes', (req, res) => {
-    const newNote = req.body;
-
-    console.log(newNote)
-    let dbData
+app.get('/api/notes',(req, res) =>{
+    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"))
+    res.json(dbNotes)
 });
-// display a single note
+
 
 // create a new note
+app.post('/api/notes', (req, res) => {
+    const newNote = req.body;
+    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"));
+  newNote.id = dbNotes.length + 1;
+    console.log(newNote)
+    dbNotes.push(newNote)
+   fs.writeFileSync("./db/db.json", JSON.stringify(dbNotes))
+   res.json(newNote)
+  });
 
 
 
