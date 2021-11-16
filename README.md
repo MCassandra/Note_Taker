@@ -20,7 +20,6 @@ This application uses Express.js to build a notetaker that takes users' input an
 ![screenshot of note taker app ](assets/save.jpeg)
 
 
-Repository: https://github.com/MCassandra/Employee_Management_System  
-Video tutorial: https://drive.google.com/file/d/1UWMkvSyYH7IEzkdsbGXq7zIkrPuf1Ca8/view?usp=sharing
+Repository: https://github.com/MCassandra/Note_Taker   
 
-live app: https://evening-brushlands-05589.herokuapp.com/
+Live app: https://evening-brushlands-05589.herokuapp.com/
