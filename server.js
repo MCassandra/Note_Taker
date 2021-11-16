@@ -9,7 +9,7 @@ const fs = require('fs')
 // Sets up the Express App
 
 const app = express();
-const PORT = 3002;
+const PORT = 3001;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +26,13 @@ app.get('/api/notes',(req, res) =>{
     res.json(dbNotes)
 });
 
+// app.get('/api/notes/:id',(req, res) =>{
+//     const chosen = req.params.id;
+//     console
+//     const dbNotes = JSON.parse(fs.readFileSync("./db/db.json"))
+//     res.json(dbNotes)
+// });
+
 
 // create a new note
 app.post('/api/notes', (req, res) => {
@@ -40,12 +47,17 @@ app.post('/api/notes', (req, res) => {
 
 
 // delete a note
-app.delete('/notes/:id', (req, res,) => {
+app.delete('/api/notes/:id', (req, res,) => {
+    const dbNotes = JSON.parse(fs.readFileSync("./db/db.json")); 
     const dbIndex = getIndexById(req.params.id, dbNotes);
     if (dbIndex !== -1) {
       dbNotes.splice(dbIndex, 1);
+      res.status(204).send();
+  } else {
+    res.status(404).send();
     };
   });
-// Starts the server to begin listening
+
+  // Starts the server to begin listening
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
